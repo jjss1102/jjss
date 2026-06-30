@@ -1,0 +1,26 @@
+name: CI/CD Workflow
+# 触发规则：main分支推送、提交PR时自动运行
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+# 运行环境
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取仓库代码
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      # 示例步骤，根据你的项目替换
+      - name: Print environment info
+        run: |
+          echo "Current branch: $GITHUB_REF_NAME"
+          echo "CI build running..."
+
+      # 如需构建/打包/部署，在此追加命令
+      # - name: Build Project
+      #   run: ./build.sh
